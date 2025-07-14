@@ -17,7 +17,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen galaxy-bg bg-galaxy-gradient overflow-hidden">
+    <section id="home" className="relative py-20 galaxy-bg bg-galaxy-gradient overflow-hidden">
       <div className="galaxy-overlay relative z-10">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-2 h-2 bg-white rounded-full animate-twinkle"></div>
@@ -27,11 +27,11 @@ const HeroSection = () => {
           <div className="absolute top-1/3 right-10 w-1 h-1 bg-white rounded-full animate-twinkle" style={{ animationDelay: '1.5s' }}></div>
         </div>
 
-        <div className="container mx-auto px-4 pt-20 pb-16">
-          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen">
+        <div className="container mx-auto px-4 py-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className={`space-y-8 ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`} data-aos="fade-right">
               <div className="space-y-6">
-                <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight font-primary">
+                <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight font-primary">
                   Your{' '}
                   <span className="gradient-text highlight-curved">Aesthetic</span>
                   <br />
@@ -86,12 +86,6 @@ const HeroSection = () => {
                 <Award className="w-8 h-8 text-white" />
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </div>

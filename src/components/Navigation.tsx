@@ -5,13 +5,11 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
       setShowScrollTop(window.scrollY > 300);
     };
 
@@ -33,9 +31,7 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-emerald-900/95 backdrop-blur-md shadow-xl' : 'bg-transparent'
-      }`}>
+      <nav className="fixed w-full z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center">
@@ -78,7 +74,7 @@ const Navigation = () => {
         </div>
 
         {isOpen && (
-          <div className="md:hidden bg-emerald-900/95 backdrop-blur-md">
+          <div className="md:hidden bg-white/10 backdrop-blur-md border-t border-white/20">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {menuItems.map((item) => (
                 <Link

@@ -2,6 +2,7 @@
 import React from 'react';
 import ContactSection from '../components/ContactSection';
 import InteractiveMap from '../components/InteractiveMap';
+import Footer from '../components/Footer';
 
 const Contact = () => {
   React.useEffect(() => {
@@ -11,11 +12,11 @@ const Contact = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="min-h-screen galaxy-bg bg-sage-gradient relative overflow-hidden flex items-center">
+      <section className="py-20 galaxy-bg bg-sage-gradient relative overflow-hidden">
         <div className="galaxy-overlay relative z-10 w-full">
-          <div className="container mx-auto px-4 py-20">
+          <div className="container mx-auto px-4">
             <div className="text-center" data-aos="fade-up">
-              <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 font-primary">
+              <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6 font-primary">
                 Contact <span className="gradient-text highlight-curved">Us</span>
               </h1>
               <p className="text-xl text-emerald-100 max-w-3xl mx-auto font-secondary">
@@ -34,6 +35,7 @@ const Contact = () => {
       </section>
 
       <ContactSection />
+      <Footer />
     </div>
   );
 };

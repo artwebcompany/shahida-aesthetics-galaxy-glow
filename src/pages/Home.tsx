@@ -4,6 +4,8 @@ import LoadingScreen from '../components/LoadingScreen';
 import HeroSection from '../components/HeroSection';
 import VideoSection from '../components/VideoSection';
 import GallerySection from '../components/GallerySection';
+import TestimonialsSection from '../components/TestimonialsSection';
+import Footer from '../components/Footer';
 
 const Home = () => {
   const [showContent, setShowContent] = useState(false);
@@ -21,6 +23,8 @@ const Home = () => {
           <HeroSection />
           <VideoSection />
           <GallerySection />
+          <TestimonialsSection />
+          <Footer />
         </div>
       )}
     </>
