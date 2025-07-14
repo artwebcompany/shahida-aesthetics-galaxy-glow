@@ -92,12 +92,12 @@ const ServicesSection = () => {
   return (
     <section id="services" className="py-20 bg-gradient-to-br from-emerald-50 to-sage-50 relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in-down' : 'opacity-0'}`}>
-          <h2 className="text-4xl lg:text-5xl font-bold text-emerald-900 mb-6">
+        <div className="text-center mb-16" data-aos="fade-up">
+          <h2 className="text-4xl lg:text-5xl font-bold text-emerald-900 mb-6 font-primary">
             Our{' '}
-            <span className="gradient-text">Services</span>
+            <span className="gradient-text highlight-curved">Services</span>
           </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto font-secondary">
             Comprehensive aesthetic treatments combining medical expertise with artistic precision
           </p>
         </div>
@@ -106,8 +106,9 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-emerald-100 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="gradient-card rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-emerald-100"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
             >
               <div className="relative overflow-hidden">
                 <img
@@ -116,25 +117,25 @@ const ServicesSection = () => {
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/70 to-transparent"></div>
-                <div className="absolute top-4 left-4 bg-gradient-to-r from-emerald-600 to-emerald-500 p-3 rounded-full">
+                <div className="absolute top-4 left-4 gradient-button p-3 rounded-full">
                   <service.icon className="w-6 h-6 text-white" />
                 </div>
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-emerald-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
+                <h3 className="text-xl font-bold text-emerald-900 mb-3 font-primary">{service.title}</h3>
+                <p className="text-gray-600 mb-4 font-secondary">{service.description}</p>
                 
                 <div className="space-y-2 mb-6">
                   {service.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-gradient-to-r from-emerald-600 to-emerald-500 rounded-full"></div>
-                      <span className="text-sm text-gray-600">{feature}</span>
+                      <span className="text-sm text-gray-600 font-secondary">{feature}</span>
                     </div>
                   ))}
                 </div>
 
-                <button className="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
+                <button className="w-full gradient-button text-white py-3 rounded-lg font-semibold transition-all duration-300 font-secondary">
                   Learn More
                 </button>
               </div>
@@ -142,36 +143,39 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        <div className={`bg-gradient-to-r from-emerald-600 to-emerald-500 rounded-3xl p-8 md:p-12 text-white ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+        <div className="gradient-button rounded-3xl p-8 md:p-12 text-white" data-aos="fade-up">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-4">Our Treatment Process</h3>
-            <p className="text-emerald-100 text-lg">Step by step journey to your transformation</p>
+            <h3 className="text-3xl font-bold mb-4 font-primary">Our Treatment Process</h3>
+            <p className="text-emerald-100 text-lg font-secondary">Step by step journey to your transformation</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {processSteps.map((step, index) => (
               <div
                 key={step.step}
-                className={`text-center ${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`}
-                style={{ animationDelay: `${index * 0.2}s` }}
+                className="text-center"
+                data-aos="fade-right"
+                data-aos-delay={index * 200}
               >
-                <div className="bg-white/20 backdrop-blur-md rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                <div className="bg-white/20 backdrop-blur-md rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold font-primary">
                   {step.step}
                 </div>
-                <h4 className="text-xl font-semibold mb-3">{step.title}</h4>
-                <p className="text-emerald-100">{step.description}</p>
+                <h4 className="text-xl font-semibold mb-3 font-primary">{step.title}</h4>
+                <p className="text-emerald-100 font-secondary">{step.description}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className={`text-center mt-16 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-          <div className="bg-white rounded-2xl p-8 shadow-xl max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-emerald-900 mb-4">Why Choose Us?</h3>
-            <p className="text-gray-700 text-lg mb-6">
+        <div className="text-center mt-16" data-aos="fade-up">
+          <div className="gradient-card rounded-2xl p-8 shadow-xl max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-emerald-900 mb-4 font-primary">
+              <span className="highlight-curved-thick">Why Choose Us?</span>
+            </h3>
+            <p className="text-gray-700 text-lg mb-6 font-secondary">
               Dr. Shahid combines medical expertise with a unique aesthetic approach. We don't just improve your appearance, we create art from every procedure.
             </p>
-            <blockquote className="text-xl italic text-emerald-700 font-medium">
+            <blockquote className="text-xl italic text-emerald-700 font-medium font-primary">
               "We believe that hair transplant and aesthetic treatments are art, not just science."
             </blockquote>
           </div>
