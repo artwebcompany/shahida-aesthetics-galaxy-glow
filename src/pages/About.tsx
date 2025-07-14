@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { CheckCircle, Heart, Users, Microscope, Award, Star } from 'lucide-react';
 import Footer from '../components/Footer';
@@ -52,7 +51,7 @@ const About = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="py-20 galaxy-bg bg-emerald-gradient relative overflow-hidden">
+      <section className="py-16 galaxy-bg bg-emerald-gradient relative overflow-hidden">
         <div className="galaxy-overlay relative z-10 w-full">
           <div className="container mx-auto px-4">
             <div className="text-center" data-aos="fade-up">
@@ -66,6 +65,9 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      {/* Section Separator */}
+      <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
 
       {/* About Content */}
       <section className="py-20 bg-gradient-to-br from-emerald-50 to-sage-50">
@@ -106,6 +108,9 @@ const About = () => {
         </div>
       </section>
 
+      {/* Section Separator */}
+      <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
+
       {/* Features Section */}
       <section className="py-20 galaxy-bg bg-cosmic-gradient">
         <div className="galaxy-overlay container mx-auto px-4">
@@ -133,6 +138,9 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      {/* Section Separator */}
+      <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
 
       <Footer />
     </div>

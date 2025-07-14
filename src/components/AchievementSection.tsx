@@ -112,69 +112,88 @@ const AchievementSection = () => {
   ];
 
   return (
-    <section id="achievement" className="py-20 galaxy-bg bg-cosmic-gradient relative overflow-hidden">
-      <div className="galaxy-overlay relative z-10">
+    <div>
+      {/* Statistics Section */}
+      <section id="achievement" className="py-20 bg-gradient-to-br from-emerald-50 to-sage-50">
         <div className="container mx-auto px-4">
           <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in-down' : 'opacity-0'}`}>
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-emerald-900 mb-6 font-primary">
               Our{' '}
-              <span className="gradient-text">Achievements</span>
+              <span className="gradient-text highlight-curved">Statistics</span>
             </h2>
-            <p className="text-xl text-emerald-100 max-w-3xl mx-auto">
-              Recognition and milestones that showcase our commitment to excellence in aesthetic medicine
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-secondary">
+              Numbers that showcase our commitment to excellence in aesthetic medicine
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {achievements.map((achievement, index) => (
               <div
                 key={achievement.label}
-                className={`bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center border border-white/20 hover:bg-white/20 transition-all duration-300 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+                className={`gradient-card rounded-2xl p-8 text-center border border-emerald-200 hover:shadow-lg transition-all duration-300 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className={`bg-gradient-to-r ${achievement.color} p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center`}>
                   <achievement.icon className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-4xl font-bold text-white mb-2">
+                <div className="text-4xl font-bold text-emerald-900 mb-2 font-primary">
                   {achievement.number.toLocaleString()}{achievement.suffix}
                 </div>
-                <h3 className="text-xl font-semibold text-emerald-200 mb-3">{achievement.label}</h3>
-                <p className="text-emerald-100 text-sm">{achievement.description}</p>
+                <h3 className="text-xl font-semibold text-emerald-800 mb-3 font-primary">{achievement.label}</h3>
+                <p className="text-gray-600 text-sm font-secondary">{achievement.description}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className={`bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-            <h3 className="text-3xl font-bold text-white text-center mb-12">Our Journey</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {milestones.map((milestone, index) => (
-                <div
-                  key={milestone.year}
-                  className={`text-center ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}
-                  style={{ animationDelay: `${index * 0.3}s` }}
-                >
-                  <div className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-2xl font-bold py-3 px-6 rounded-full mb-4 inline-block">
-                    {milestone.year}
+      {/* Section Separator */}
+      <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
+
+      {/* Journey Section */}
+      <section className="py-20 galaxy-bg bg-cosmic-gradient relative overflow-hidden">
+        <div className="galaxy-overlay relative z-10">
+          <div className="container mx-auto px-4">
+            <div className={`gradient-card-dark rounded-3xl p-8 border border-white/20 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+              <h3 className="text-3xl font-bold text-white text-center mb-12 font-primary">Our Journey</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {milestones.map((milestone, index) => (
+                  <div
+                    key={milestone.year}
+                    className={`text-center ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}
+                    style={{ animationDelay: `${index * 0.3}s` }}
+                  >
+                    <div className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-2xl font-bold py-3 px-6 rounded-full mb-4 inline-block font-primary">
+                      {milestone.year}
+                    </div>
+                    <h4 className="text-xl font-semibold text-white mb-3 font-primary">{milestone.title}</h4>
+                    <p className="text-emerald-100 font-secondary">{milestone.description}</p>
                   </div>
-                  <h4 className="text-xl font-semibold text-white mb-3">{milestone.title}</h4>
-                  <p className="text-emerald-100">{milestone.description}</p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className={`text-center mt-16 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-            <div className="bg-gradient-to-r from-emerald-600 to-emerald-500 rounded-2xl p-8 max-w-4xl mx-auto">
-              <Star className="w-12 h-12 text-white mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-4">Award-Winning Excellence</h3>
-              <p className="text-emerald-100 text-lg">
+      {/* Section Separator */}
+      <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
+
+      {/* Award Section */}
+      <section className="py-20 bg-gradient-to-br from-sage-50 to-emerald-50">
+        <div className="container mx-auto px-4">
+          <div className={`text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+            <div className="gradient-card rounded-2xl p-8 max-w-4xl mx-auto">
+              <Star className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
+              <h3 className="text-2xl font-bold text-emerald-900 mb-4 font-primary">Award-Winning Excellence</h3>
+              <p className="text-gray-700 text-lg font-secondary">
                 Recognized nationally and internationally for our commitment to patient care and innovative aesthetic treatments.
               </p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 
