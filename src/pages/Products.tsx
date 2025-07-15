@@ -1,8 +1,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ShoppingCart, Star, Heart, ArrowLeft, X, Plus, Minus } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { ShoppingCart, Star, Heart, ArrowLeft } from 'lucide-react';
 import Footer from '../components/Footer';
 
 interface Product {
@@ -27,11 +26,9 @@ interface CartItem extends Product {
 
 const Products = () => {
   const navigate = useNavigate();
-  const { toast } = useToast();
   const [cart, setCart] = useState<CartItem[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [showCart, setShowCart] = useState(false);
 
   const products: Product[] = [
     {
@@ -91,43 +88,20 @@ const Products = () => {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === product.id);
       if (existingItem) {
-        const updatedCart = prevCart.map(item =>
+        return prevCart.map(item =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
-        toast({
-          title: "Produk Ditambahkan!",
-          description: `${product.name} berhasil ditambahkan ke keranjang`,
-        });
-        return updatedCart;
       }
-      toast({
-        title: "Produk Ditambahkan!",
-        description: `${product.name} berhasil ditambahkan ke keranjang`,
-      });
       return [...prevCart, { ...product, quantity: 1 }];
     });
-  };
-
-  const updateQuantity = (productId: number, newQuantity: number) => {
-    if (newQuantity === 0) {
-      setCart(prevCart => prevCart.filter(item => item.id !== productId));
-    } else {
-      setCart(prevCart => 
-        prevCart.map(item =>
-          item.id === productId
-            ? { ...item, quantity: newQuantity }
-            : item
-        )
-      );
-    }
   };
 
   const sendToWhatsApp = () => {
     if (cart.length === 0) return;
     
-    const phoneNumber = '971569367006'; // Updated to match contact number
+    const phoneNumber = '6281234567890'; // Ganti dengan nomor WhatsApp yang sesuai
     let message = '🛒 *Pesanan Produk Hair Care*\n\n';
     
     cart.forEach(item => {
@@ -148,9 +122,6 @@ const Products = () => {
   const formatPrice = (price: number) => {
     return `Rp ${price.toLocaleString('id-ID')}`;
   };
-
-  const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const cartItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   if (selectedProduct) {
     return (
@@ -264,117 +235,18 @@ const Products = () => {
                   <ShoppingCart className="w-5 h-5" />
                   <span>{selectedProduct.inStock ? 'Tambah ke Keranjang' : 'Stok Habis'}</span>
                 </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
-
-  if (showCart) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-sage-50">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex items-center justify-between mb-8">
-            <button
-              onClick={() => setShowCart(false)}
-              className="flex items-center text-emerald-600 hover:text-emerald-700 font-semibold"
-            >
-              <ArrowLeft className="w-5 h-5 mr-2" />
-              Kembali ke Produk
-            </button>
-            <h1 className="text-3xl font-bold text-emerald-900">Keranjang Belanja</h1>
-          </div>
-
-          {cart.length === 0 ? (
-            <div className="text-center py-16">
-              <ShoppingCart className="w-24 h-24 text-gray-300 mx-auto mb-4" />
-              <h2 className="text-2xl font-semibold text-gray-600 mb-2">Keranjang Kosong</h2>
-              <p className="text-gray-500 mb-6">Belum ada produk yang ditambahkan ke keranjang</p>
-              <button
-                onClick={() => setShowCart(false)}
-                className="gradient-button text-white px-8 py-3 rounded-lg font-semibold"
-              >
-                Mulai Belanja
-              </button>
-            </div>
-          ) : (
-            <div className="grid lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-2 space-y-4">
-                {cart.map((item) => (
-                  <div key={item.id} className="bg-white rounded-2xl p-6 shadow-lg">
-                    <div className="flex items-center space-x-4">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-20 h-20 object-cover rounded-lg"
-                      />
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-emerald-900">{item.name}</h3>
-                        <p className="text-emerald-600 font-bold">{formatPrice(item.price)}</p>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <button
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300"
-                        >
-                          <Minus className="w-4 h-4" />
-                        </button>
-                        <span className="font-semibold min-w-[2rem] text-center">{item.quantity}</span>
-                        <button
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center hover:bg-emerald-600"
-                        >
-                          <Plus className="w-4 h-4" />
-                        </button>
-                      </div>
-                      <div className="text-right">
-                        <p className="font-bold text-emerald-900">
-                          {formatPrice(item.price * item.quantity)}
-                        </p>
-                        <button
-                          onClick={() => updateQuantity(item.id, 0)}
-                          className="text-red-500 hover:text-red-700 mt-1"
-                        >
-                          <X className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="lg:col-span-1">
-                <div className="bg-white rounded-2xl p-6 shadow-lg sticky top-8">
-                  <h3 className="text-xl font-bold text-emerald-900 mb-4">Ringkasan Pesanan</h3>
-                  <div className="space-y-3 mb-6">
-                    <div className="flex justify-between">
-                      <span>Subtotal ({cartItemsCount} item)</span>
-                      <span>{formatPrice(cartTotal)}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Ongkos Kirim</span>
-                      <span className="text-emerald-600">Gratis</span>
-                    </div>
-                    <div className="border-t pt-3">
-                      <div className="flex justify-between font-bold text-lg">
-                        <span>Total</span>
-                        <span className="text-emerald-600">{formatPrice(cartTotal)}</span>
-                      </div>
-                    </div>
-                  </div>
+                
+                {cart.length > 0 && (
                   <button
                     onClick={sendToWhatsApp}
                     className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-semibold text-lg transition-colors"
                   >
-                    Pesan via WhatsApp
+                    Pesan via WhatsApp ({cart.length} item)
                   </button>
-                </div>
+                )}
               </div>
             </div>
-          )}
+          </div>
         </div>
         <Footer />
       </div>
@@ -465,23 +337,37 @@ const Products = () => {
               </div>
             ))}
           </div>
+
+          {/* Cart Summary */}
+          {cart.length > 0 && (
+            <div className="fixed bottom-6 right-6 bg-white rounded-2xl shadow-2xl p-6 max-w-sm border border-emerald-100">
+              <h3 className="font-bold text-emerald-900 mb-4">Keranjang Belanja ({cart.length})</h3>
+              <div className="space-y-2 mb-4 max-h-32 overflow-y-auto">
+                {cart.map((item) => (
+                  <div key={item.id} className="flex justify-between text-sm">
+                    <span>{item.name} x{item.quantity}</span>
+                    <span>{formatPrice(item.price * item.quantity)}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="border-t pt-3">
+                <div className="flex justify-between font-bold text-emerald-900 mb-3">
+                  <span>Total:</span>
+                  <span>
+                    {formatPrice(cart.reduce((sum, item) => sum + (item.price * item.quantity), 0))}
+                  </span>
+                </div>
+                <button
+                  onClick={sendToWhatsApp}
+                  className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold transition-colors"
+                >
+                  Pesan via WhatsApp
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </section>
-
-      {/* Floating Cart Button */}
-      {cart.length > 0 && (
-        <button
-          onClick={() => setShowCart(true)}
-          className="fixed bottom-6 right-6 bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110"
-        >
-          <div className="relative">
-            <ShoppingCart className="w-6 h-6" />
-            <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-              {cartItemsCount}
-            </span>
-          </div>
-        </button>
-      )}
 
       <Footer />
     </div>

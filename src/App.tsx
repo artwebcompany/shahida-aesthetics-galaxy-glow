@@ -5,7 +5,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import Navigation from './components/Navigation';
-import { Toaster } from './components/ui/toaster';
 import Home from './pages/Home';
 import About from './pages/About';
 import Achievement from './pages/Achievement';
@@ -34,7 +33,6 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
-        <Toaster />
       </div>
     </Router>
   );
