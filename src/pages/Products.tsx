@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ShoppingCart, Star, Heart, ArrowLeft, X, Plus, Minus } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -32,6 +31,19 @@ const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [showCart, setShowCart] = useState(false);
+
+  // Load cart from localStorage on component mount
+  useEffect(() => {
+    const savedCart = localStorage.getItem('haircare-cart');
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
+
+  // Save cart to localStorage whenever cart changes
+  useEffect(() => {
+    localStorage.setItem('haircare-cart', JSON.stringify(cart));
+  }, [cart]);
 
   const products: Product[] = [
     {
@@ -280,6 +292,22 @@ const Products = () => {
             </div>
           </div>
         </div>
+
+        {/* Always show cart icon */}
+        <div className="fixed bottom-6 right-6 z-50">
+          <button
+            onClick={() => setShowCart(true)}
+            className="bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 relative"
+          >
+            <ShoppingCart className="w-6 h-6" />
+            {cartItemsCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold">
+                {cartItemsCount}
+              </span>
+            )}
+          </button>
+        </div>
+
         <Footer />
       </div>
     );
@@ -480,20 +508,22 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Cart Button */}
-      {cart.length > 0 && (
-        <div className="fixed bottom-6 right-6 z-50">
-          <button
-            onClick={() => setShowCart(true)}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 relative"
-          >
-            <ShoppingCart className="w-6 h-6" />
+      {/* Always show cart icon */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <button
+          onClick={() => setShowCart(true)}
+          className="bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 relative"
+        >
+          <ShoppingCart className="w-6 h-6" />
+          {cartItemsCount > 0 && (
             <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold">
               {cartItemsCount}
             </span>
-          </button>
-          
-          {/* Cart Preview */}
+          )}
+        </button>
+        
+        {/* Cart Preview - only show when there are items */}
+        {cart.length > 0 && (
           <div className="absolute bottom-16 right-0 bg-white rounded-lg shadow-xl p-4 w-80 max-h-96 overflow-y-auto">
             <div className="flex items-center justify-between mb-3">
               <h3 className="font-semibold text-emerald-900">Keranjang ({cartItemsCount})</h3>
@@ -537,8 +567,8 @@ const Products = () => {
               </button>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       <Footer />
     </div>
