@@ -3,12 +3,11 @@ import React from 'react';
 import HeroSection from '../components/HeroSection';
 import ProcessSection from '../components/ProcessSection';
 import WhyChooseSection from '../components/WhyChooseSection';
+import PromoBanner from '../components/PromoBanner';
 import PricingSection from '../components/PricingSection';
 import VideoSection from '../components/VideoSection';
-import BeforeAfterCarousel from '../components/BeforeAfterCarousel';
-import TestimonialsSection from '../components/TestimonialsSection';
 import GallerySection from '../components/GallerySection';
-import PromoBanner from '../components/PromoBanner';
+import TestimonialsSection from '../components/TestimonialsSection';
 import Footer from '../components/Footer';
 
 const Home = () => {
@@ -29,12 +28,12 @@ const Home = () => {
       {/* Section Separator */}
       <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
       
-      <PricingSection />
+      <PromoBanner />
       
       {/* Section Separator */}
       <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
       
-      <BeforeAfterCarousel />
+      <PricingSection />
       
       {/* Section Separator */}
       <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
@@ -51,11 +50,7 @@ const Home = () => {
       
       <TestimonialsSection />
       
-      {/* Promo Banner positioned to overlap with Footer */}
-      <div className="relative">
-        <PromoBanner />
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
