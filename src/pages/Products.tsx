@@ -113,6 +113,10 @@ const Products = () => {
   const updateQuantity = (productId: number, newQuantity: number) => {
     if (newQuantity === 0) {
       setCart(prevCart => prevCart.filter(item => item.id !== productId));
+      toast({
+        title: "Produk Dihapus",
+        description: "Produk berhasil dihapus dari keranjang",
+      });
     } else {
       setCart(prevCart => 
         prevCart.map(item =>
@@ -124,10 +128,18 @@ const Products = () => {
     }
   };
 
+  const removeFromCart = (productId: number) => {
+    setCart(prevCart => prevCart.filter(item => item.id !== productId));
+    toast({
+      title: "Produk Dihapus",
+      description: "Produk berhasil dihapus dari keranjang",
+    });
+  };
+
   const sendToWhatsApp = () => {
     if (cart.length === 0) return;
     
-    const phoneNumber = '971569367006'; // Updated to match contact number
+    const phoneNumber = '6287808900905';
     let message = '🛒 *Pesanan Produk Hair Care*\n\n';
     
     cart.forEach(item => {
@@ -335,7 +347,7 @@ const Products = () => {
                           {formatPrice(item.price * item.quantity)}
                         </p>
                         <button
-                          onClick={() => updateQuantity(item.id, 0)}
+                          onClick={() => removeFromCart(item.id)}
                           className="text-red-500 hover:text-red-700 mt-1"
                         >
                           <X className="w-4 h-4" />
@@ -468,19 +480,64 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Floating Cart Button */}
+      {/* Cart Button */}
       {cart.length > 0 && (
-        <button
-          onClick={() => setShowCart(true)}
-          className="fixed bottom-6 right-6 bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110"
-        >
-          <div className="relative">
+        <div className="fixed bottom-6 right-6 z-50">
+          <button
+            onClick={() => setShowCart(true)}
+            className="bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 relative"
+          >
             <ShoppingCart className="w-6 h-6" />
-            <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+            <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold">
               {cartItemsCount}
             </span>
+          </button>
+          
+          {/* Cart Preview */}
+          <div className="absolute bottom-16 right-0 bg-white rounded-lg shadow-xl p-4 w-80 max-h-96 overflow-y-auto">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="font-semibold text-emerald-900">Keranjang ({cartItemsCount})</h3>
+              <button
+                onClick={() => setShowCart(true)}
+                className="text-emerald-600 hover:text-emerald-700 text-sm font-medium"
+              >
+                Lihat Detail
+              </button>
+            </div>
+            
+            <div className="space-y-3 mb-4">
+              {cart.slice(0, 3).map((item) => (
+                <div key={item.id} className="flex items-center space-x-3">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-12 h-12 object-cover rounded-lg"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-emerald-900 truncate">{item.name}</p>
+                    <p className="text-xs text-gray-600">{item.quantity}x {formatPrice(item.price)}</p>
+                  </div>
+                </div>
+              ))}
+              {cart.length > 3 && (
+                <p className="text-sm text-gray-500 text-center">+{cart.length - 3} produk lainnya</p>
+              )}
+            </div>
+            
+            <div className="border-t pt-3">
+              <div className="flex justify-between font-semibold text-emerald-900 mb-3">
+                <span>Total:</span>
+                <span>{formatPrice(cartTotal)}</span>
+              </div>
+              <button
+                onClick={sendToWhatsApp}
+                className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold text-sm transition-colors"
+              >
+                Pesan via WhatsApp
+              </button>
+            </div>
           </div>
-        </button>
+        </div>
       )}
 
       <Footer />
