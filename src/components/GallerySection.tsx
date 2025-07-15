@@ -92,11 +92,11 @@ const GallerySection = () => {
         {/* Before & After Gallery */}
         <div className={`mb-20 ${isVisible ? 'animate-fade-in-down' : 'opacity-0'}`}>
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-emerald-900 mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-emerald-900 mb-6 font-primary">
               Before & After{' '}
-              <span className="gradient-text">Transformations</span>
+              <span className="gradient-text highlight-curved">Transformations</span>
             </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-secondary">
               See the real changes from our patients
             </p>
           </div>
@@ -105,7 +105,7 @@ const GallerySection = () => {
             {beforeAfterImages.map((item, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-3xl shadow-lg overflow-hidden border border-emerald-100 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+                className={`gradient-card rounded-3xl shadow-lg overflow-hidden border border-emerald-100 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="grid grid-cols-2">
@@ -123,8 +123,8 @@ const GallerySection = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-emerald-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
+                  <h3 className="text-xl font-bold text-emerald-900 mb-2 font-primary">{item.title}</h3>
+                  <p className="text-gray-600 font-secondary">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -134,11 +134,11 @@ const GallerySection = () => {
         {/* Beauty Products Gallery */}
         <div className={`mb-20 ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}>
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-emerald-900 mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-emerald-900 mb-6 font-primary">
               Beauty{' '}
-              <span className="gradient-text">Products</span>
+              <span className="gradient-text highlight-curved">Products</span>
             </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-secondary">
               Premium skincare and hair care products for optimal results
             </p>
           </div>
@@ -147,7 +147,7 @@ const GallerySection = () => {
             {products.map((product, index) => (
               <div
                 key={index}
-                className={`group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-emerald-100 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+                className={`group gradient-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-emerald-100 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative overflow-hidden">
@@ -163,11 +163,11 @@ const GallerySection = () => {
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-lg font-bold text-emerald-900 mb-2">{product.name}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{product.description}</p>
+                  <h3 className="text-lg font-bold text-emerald-900 mb-2 font-primary">{product.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4 font-secondary">{product.description}</p>
                   <div className="flex justify-between items-center">
-                    <span className="text-2xl font-bold text-emerald-700">{product.price}</span>
-                    <button className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:shadow-lg transition-all duration-300">
+                    <span className="text-2xl font-bold text-emerald-700 font-primary">{product.price}</span>
+                    <button className="gradient-button text-white px-4 py-2 rounded-lg text-sm font-semibold hover:shadow-lg transition-all duration-300 font-secondary">
                       Add to Cart
                     </button>
                   </div>
@@ -180,11 +180,11 @@ const GallerySection = () => {
         {/* Patient Testimonials */}
         <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`}>
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-emerald-900 mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-emerald-900 mb-6 font-primary">
               Patient{' '}
-              <span className="gradient-text">Testimonials</span>
+              <span className="gradient-text highlight-curved">Testimonials</span>
             </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-secondary">
               What our patients say about their experience
             </p>
           </div>
@@ -193,7 +193,7 @@ const GallerySection = () => {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className={`bg-gradient-to-r from-emerald-600 to-emerald-500 rounded-3xl p-8 text-white ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+                className={`gradient-button rounded-3xl p-8 text-white ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
                 style={{ animationDelay: `${index * 0.3}s` }}
               >
                 <div className="flex items-center mb-6">
@@ -203,8 +203,8 @@ const GallerySection = () => {
                     className="w-16 h-16 rounded-full object-cover mr-4"
                   />
                   <div>
-                    <h4 className="text-xl font-bold">{testimonial.name}</h4>
-                    <p className="text-emerald-100">{testimonial.role}</p>
+                    <h4 className="text-xl font-bold font-primary">{testimonial.name}</h4>
+                    <p className="text-emerald-100 font-secondary">{testimonial.role}</p>
                   </div>
                 </div>
                 
@@ -214,7 +214,7 @@ const GallerySection = () => {
                   ))}
                 </div>
                 
-                <p className="text-emerald-100 text-lg italic">"{testimonial.content}"</p>
+                <p className="text-emerald-100 text-lg italic font-secondary">"{testimonial.content}"</p>
               </div>
             ))}
           </div>

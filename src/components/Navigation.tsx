@@ -6,13 +6,11 @@ import { Link, useLocation } from 'react-router-dom';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
-      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -33,11 +31,7 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className={`fixed w-full z-50 transition-all duration-300 border-b border-white/20 ${
-        isScrolled 
-          ? 'bg-emerald-900/80 backdrop-blur-md' 
-          : 'bg-white/10 backdrop-blur-md'
-      }`}>
+      <nav className="fixed w-full z-50 bg-emerald-900/80 backdrop-blur-md border-b border-white/20 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center">

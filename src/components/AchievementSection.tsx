@@ -1,9 +1,10 @@
 
 import React, { useEffect, useState } from 'react';
-import { Trophy, Users, Star, Award, Target, Heart } from 'lucide-react';
+import { Trophy, Users, Star, Award, Target, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const AchievementSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [currentGallerySlide, setCurrentGallerySlide] = useState(0);
   const [counters, setCounters] = useState({
     patients: 0,
     doctors: 0,
@@ -111,6 +112,37 @@ const AchievementSection = () => {
     }
   ];
 
+  const galleryImages = [
+    {
+      url: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop',
+      title: 'State-of-the-art Facility',
+      description: 'Modern equipment and comfortable environment'
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=600&h=400&fit=crop',
+      title: 'Expert Medical Team',
+      description: 'Qualified professionals at your service'
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop',
+      title: 'Advanced Technology',
+      description: 'Latest medical equipment and techniques'
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=600&h=400&fit=crop',
+      title: 'Patient Care Excellence',
+      description: 'Dedicated to your comfort and satisfaction'
+    }
+  ];
+
+  const nextGallerySlide = () => {
+    setCurrentGallerySlide((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevGallerySlide = () => {
+    setCurrentGallerySlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
   return (
     <div>
       {/* Statistics Section */}
@@ -150,6 +182,76 @@ const AchievementSection = () => {
       {/* Section Separator */}
       <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
 
+      {/* Gallery Carousel Section */}
+      <section className="py-20 bg-gradient-to-br from-sage-50 to-emerald-50">
+        <div className="container mx-auto px-4">
+          <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in-down' : 'opacity-0'}`}>
+            <h2 className="text-4xl lg:text-5xl font-bold text-emerald-900 mb-6 font-primary">
+              Our{' '}
+              <span className="gradient-text highlight-curved">Gallery</span>
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-secondary">
+              Take a look inside our world-class facility
+            </p>
+          </div>
+
+          <div className="relative max-w-4xl mx-auto">
+            <div className="overflow-hidden rounded-3xl">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentGallerySlide * 100}%)` }}
+              >
+                {galleryImages.map((image, index) => (
+                  <div key={index} className="w-full flex-shrink-0 relative">
+                    <img 
+                      src={image.url} 
+                      alt={image.title}
+                      className="w-full h-96 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/70 to-transparent flex items-end">
+                      <div className="p-8 text-white">
+                        <h3 className="text-2xl font-bold mb-2 font-primary">{image.title}</h3>
+                        <p className="text-emerald-100 font-secondary">{image.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevGallerySlide}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 gradient-button p-3 rounded-full text-white hover:shadow-lg transition-all duration-300"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={nextGallerySlide}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 gradient-button p-3 rounded-full text-white hover:shadow-lg transition-all duration-300"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {galleryImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentGallerySlide(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    currentGallerySlide === index ? 'bg-emerald-600' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Separator */}
+      <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
+
       {/* Journey Section */}
       <section className="py-20 galaxy-bg bg-cosmic-gradient relative overflow-hidden">
         <div className="galaxy-overlay relative z-10">
@@ -163,7 +265,7 @@ const AchievementSection = () => {
                     className={`text-center ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}
                     style={{ animationDelay: `${index * 0.3}s` }}
                   >
-                    <div className="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-2xl font-bold py-3 px-6 rounded-full mb-4 inline-block font-primary">
+                    <div className="gradient-button text-white text-2xl font-bold py-3 px-6 rounded-full mb-4 inline-block font-primary">
                       {milestone.year}
                     </div>
                     <h4 className="text-xl font-semibold text-white mb-3 font-primary">{milestone.title}</h4>
