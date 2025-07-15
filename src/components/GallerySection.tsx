@@ -1,8 +1,10 @@
 
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Star, Heart } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const GallerySection = () => {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -42,30 +44,25 @@ const GallerySection = () => {
     }
   ];
 
+  // Only show 2 products
   const products = [
     {
-      name: 'Premium Hair Serum',
-      description: 'Advanced formula for hair growth',
+      name: 'Premium Hair Growth Serum',
+      description: 'Advanced formula for hair growth with clinically proven ingredients',
       image: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=300&h=300&fit=crop',
-      price: 'AED 299'
+      price: 'Rp 299.000',
+      originalPrice: 'Rp 399.000',
+      rating: 4.9,
+      reviews: 234
     },
     {
-      name: 'Biotin Complex',
-      description: 'Essential vitamins for hair health',
-      image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=300&fit=crop',
-      price: 'AED 199'
-    },
-    {
-      name: 'Recovery Kit',
-      description: 'Post-procedure care essentials',
+      name: 'Complete Hair Transplant Recovery Kit',
+      description: 'Comprehensive post-procedure care essentials for optimal healing',
       image: 'https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=300&h=300&fit=crop',
-      price: 'AED 399'
-    },
-    {
-      name: 'Anti-Aging Cream',
-      description: 'Premium skincare formula',
-      image: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=300&h=300&fit=crop',
-      price: 'AED 449'
+      price: 'Rp 599.000',
+      originalPrice: 'Rp 799.000',
+      rating: 4.8,
+      reviews: 156
     }
   ];
 
@@ -131,49 +128,71 @@ const GallerySection = () => {
           </div>
         </div>
 
-        {/* Beauty Products Gallery */}
+        {/* Products Section */}
         <div className={`mb-20 ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}>
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-emerald-900 mb-6 font-primary">
-              Beauty{' '}
+              Featured{' '}
               <span className="gradient-text highlight-curved">Products</span>
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto font-secondary">
-              Premium skincare and hair care products for optimal results
+              Premium hair care products for optimal results
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {products.map((product, index) => (
               <div
                 key={index}
                 className={`group gradient-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-emerald-100 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="relative overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 right-4 bg-gradient-to-r from-emerald-600 to-emerald-500 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Heart className="w-4 h-4 text-white" />
-                  </div>
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-lg font-bold text-emerald-900 mb-2 font-primary">{product.name}</h3>
-                  <p className="text-gray-600 text-sm mb-4 font-secondary">{product.description}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-2xl font-bold text-emerald-700 font-primary">{product.price}</span>
-                    <button className="gradient-button text-white px-4 py-2 rounded-lg text-sm font-semibold hover:shadow-lg transition-all duration-300 font-secondary">
-                      Add to Cart
-                    </button>
+                  <div className="flex items-center mb-2">
+                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                    <span className="ml-1 text-sm text-gray-600">{product.rating} ({product.reviews} ulasan)</span>
                   </div>
+                  
+                  <h3 className="text-xl font-bold text-emerald-900 mb-2 font-primary">{product.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4 font-secondary">{product.description}</p>
+                  
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <span className="text-2xl font-bold text-emerald-700 font-primary">{product.price}</span>
+                      <span className="text-sm text-gray-500 line-through ml-2">{product.originalPrice}</span>
+                    </div>
+                  </div>
+                  
+                  <button 
+                    onClick={() => navigate('/products')}
+                    className="w-full gradient-button text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 font-secondary flex items-center justify-center space-x-2"
+                  >
+                    <span>Lihat Detail</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* View All Products Button */}
+          <div className="text-center mt-12">
+            <button 
+              onClick={() => navigate('/products')}
+              className="gradient-button text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 font-secondary flex items-center space-x-2 mx-auto"
+            >
+              <span>Lihat Semua Produk</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
 
