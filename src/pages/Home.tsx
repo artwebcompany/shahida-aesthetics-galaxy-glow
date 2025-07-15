@@ -6,7 +6,7 @@ import WhyChooseSection from '../components/WhyChooseSection';
 import PromoBanner from '../components/PromoBanner';
 import PricingSection from '../components/PricingSection';
 import VideoSection from '../components/VideoSection';
-import BeforeAfterCarousel from '../components/BeforeAfterCarousel';
+import GallerySection from '../components/GallerySection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import Footer from '../components/Footer';
 
@@ -38,12 +38,12 @@ const Home = () => {
       {/* Section Separator */}
       <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
       
-      <BeforeAfterCarousel />
+      <VideoSection />
       
       {/* Section Separator */}
       <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
       
-      <VideoSection />
+      <GallerySection />
       
       {/* Section Separator */}
       <div className="h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
