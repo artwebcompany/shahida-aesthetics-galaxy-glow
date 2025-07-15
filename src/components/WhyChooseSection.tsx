@@ -1,38 +1,37 @@
 
 import React from 'react';
-import { Shield, Award, Users, Heart, Star, Microscope } from 'lucide-react';
 
 const WhyChooseSection = () => {
   const reasons = [
     {
-      icon: Shield,
+      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop',
       title: 'Safety First',
-      description: 'Advanced safety protocols and sterile environment for all procedures'
+      description: 'Advanced safety protocols and sterile environment for all procedures. We prioritize your health and well-being with state-of-the-art medical equipment and internationally certified safety standards.'
     },
     {
-      icon: Award,
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop',
       title: 'Award Winning',
-      description: '320+ national awards and international recognition for excellence'
+      description: '320+ national awards and international recognition for excellence in aesthetic medicine. Our achievements reflect our commitment to delivering world-class treatments and exceptional patient care.'
     },
     {
-      icon: Users,
+      image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=600&h=400&fit=crop',
       title: 'Expert Team',
-      description: '236+ professional doctors with years of specialized experience'
+      description: '236+ professional doctors with years of specialized experience in aesthetic procedures. Our team consists of board-certified specialists who stay updated with the latest techniques and innovations.'
     },
     {
-      icon: Heart,
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop',
       title: 'Patient Care',
-      description: 'Personalized approach with 69,000+ satisfied patients worldwide'
+      description: 'Personalized approach with 69,000+ satisfied patients worldwide. We believe in creating customized treatment plans that address your unique needs and aesthetic goals with compassionate care.'
     },
     {
-      icon: Star,
+      image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&h=400&fit=crop',
       title: 'Natural Results',
-      description: 'Artistic precision ensuring natural-looking, beautiful outcomes'
+      description: 'Artistic precision ensuring natural-looking, beautiful outcomes. Our philosophy focuses on enhancing your natural beauty rather than creating artificial changes, delivering results that look effortlessly beautiful.'
     },
     {
-      icon: Microscope,
+      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop',
       title: 'Latest Technology',
-      description: 'State-of-the-art equipment and innovative treatment methods'
+      description: 'State-of-the-art equipment and innovative treatment methods. We invest in cutting-edge technology and proven techniques to ensure you receive the most advanced and effective treatments available.'
     }
   ];
 
@@ -52,15 +51,23 @@ const WhyChooseSection = () => {
           {reasons.map((reason, index) => (
             <div
               key={reason.title}
-              className="gradient-card rounded-2xl p-8 text-center hover:shadow-lg transition-all duration-300"
+              className="group"
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
-              <div className="gradient-button p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
-                <reason.icon className="w-8 h-8 text-white" />
+              <div className="relative overflow-hidden rounded-2xl mb-6 h-64">
+                <img
+                  src={reason.image}
+                  alt={reason.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/80 via-emerald-900/20 to-transparent"></div>
+                <div className="absolute bottom-6 left-6">
+                  <h3 className="text-2xl font-bold text-white mb-2 font-primary">{reason.title}</h3>
+                </div>
+                <div className="absolute inset-0 bg-emerald-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-              <h3 className="text-xl font-semibold text-emerald-900 mb-4 font-primary">{reason.title}</h3>
-              <p className="text-gray-700 font-secondary">{reason.description}</p>
+              <p className="text-gray-700 font-secondary leading-relaxed">{reason.description}</p>
             </div>
           ))}
         </div>
