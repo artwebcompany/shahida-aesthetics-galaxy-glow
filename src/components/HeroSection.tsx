@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { Play, Star, Users, Award, Calendar } from 'lucide-react';
 
 const HeroSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // Langsung set true agar muncul
 
   useEffect(() => {
+    // Pastikan komponen langsung visible saat mount
     setIsVisible(true);
   }, []);
 
@@ -29,7 +30,7 @@ const HeroSection = () => {
 
         <div className="container mx-auto px-4 py-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className={`space-y-8 ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`} data-aos="fade-right">
+            <div className="space-y-8 opacity-100 transform translate-x-0" data-aos="fade-right">
               <div className="space-y-6">
                 <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight font-primary">
                   Your{' '}
@@ -55,8 +56,7 @@ const HeroSection = () => {
                 {stats.map((stat, index) => (
                   <div
                     key={stat.label}
-                    className={`text-center gradient-card-dark p-4 rounded-xl ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
-                    style={{ animationDelay: `${index * 0.2}s` }}
+                    className="text-center gradient-card-dark p-4 rounded-xl opacity-100 transform translate-y-0"
                     data-aos="fade-up"
                     data-aos-delay={index * 100}
                   >
@@ -68,7 +68,7 @@ const HeroSection = () => {
               </div>
             </div>
 
-            <div className={`relative ${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`} data-aos="fade-left">
+            <div className="relative opacity-100 transform translate-x-0" data-aos="fade-left">
               <div className="relative gradient-card-dark rounded-3xl p-8 border border-emerald-400/20">
                 <img
                   src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=800&fit=crop"
