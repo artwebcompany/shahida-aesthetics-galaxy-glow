@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -64,29 +63,29 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				emerald: {
-					50: '#f0f7f3',
-					100: '#d9ede1',
-					200: '#b6dbc7',
-					300: '#85c3a4',
-					400: '#52a47e',
-					500: '#2c7345',
-					600: '#225a37',
-					700: '#1c472c',
-					800: '#173a24',
-					900: '#122f1d',
-					950: '#0b1e13'
+					50: '#f2f8f4',
+					100: '#e0f0e5',
+					200: '#c4e2ce',
+					300: '#9dcfae',
+					400: '#6eb688',
+					500: '#4a9868',
+					600: '#3a7a52',
+					700: '#316144',
+					800: '#2a4e38',
+					900: '#24412f',
+					950: '#122518'
 				},
 				sage: {
-					50: '#f0f7f3',
-					100: '#d9ede1',
-					200: '#b6dbc7',
-					300: '#85c3a4',
-					400: '#52a47e',
-					500: '#2c7345',
-					600: '#225a37',
-					700: '#1c472c',
-					800: '#173a24',
-					900: '#122f1d'
+					50: '#f2f8f4',
+					100: '#e0f0e5',
+					200: '#c4e2ce',
+					300: '#9dcfae',
+					400: '#6eb688',
+					500: '#4a9868',
+					600: '#3a7a52',
+					700: '#316144',
+					800: '#2a4e38',
+					900: '#24412f'
 				}
 			},
 			borderRadius: {
@@ -179,10 +178,10 @@ export default {
 				},
 				'pulse-glow': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px rgba(44, 115, 69, 0.4)'
+						boxShadow: '0 0 20px rgba(74, 152, 104, 0.4)'
 					},
 					'50%': {
-						boxShadow: '0 0 40px rgba(44, 115, 69, 0.8)'
+						boxShadow: '0 0 40px rgba(74, 152, 104, 0.8)'
 					}
 				}
 			},
@@ -199,10 +198,10 @@ export default {
 				'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
 			},
 			backgroundImage: {
-				'galaxy-gradient': 'linear-gradient(135deg, #122f1d 0%, #173a24 25%, #1c472c 50%, #225a37 75%, #2c7345 100%)',
-				'emerald-gradient': 'linear-gradient(135deg, #0b1e13 0%, #122f1d 25%, #173a24 50%, #1c472c 75%, #2c7345 100%)',
-				'sage-gradient': 'linear-gradient(135deg, #0b1e13 0%, #122f1d 25%, #173a24 50%, #1c472c 75%, #2c7345 100%)',
-				'cosmic-gradient': 'radial-gradient(ellipse at center, #173a24 0%, #0b1e13 50%, #000000 100%)'
+				'galaxy-gradient': 'linear-gradient(135deg, #24412f 0%, #2a4e38 25%, #316144 50%, #3a7a52 75%, #4a9868 100%)',
+				'emerald-gradient': 'linear-gradient(135deg, #122518 0%, #24412f 25%, #2a4e38 50%, #316144 75%, #4a9868 100%)',
+				'sage-gradient': 'linear-gradient(135deg, #122518 0%, #24412f 25%, #2a4e38 50%, #316144 75%, #4a9868 100%)',
+				'cosmic-gradient': 'radial-gradient(ellipse at center, #2a4e38 0%, #122518 50%, #000000 100%)'
 			}
 		}
 	},
