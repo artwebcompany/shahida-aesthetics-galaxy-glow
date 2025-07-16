@@ -18,24 +18,24 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 160 84% 39%;
+    --primary: 136 45% 31%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 160 30% 25%;
-    --secondary-foreground: 160 84% 95%;
+    --secondary: 136 30% 20%;
+    --secondary-foreground: 136 45% 95%;
 
-    --muted: 160 30% 96%;
-    --muted-foreground: 160 20% 40%;
+    --muted: 136 30% 96%;
+    --muted-foreground: 136 20% 40%;
 
-    --accent: 160 84% 45%;
+    --accent: 136 45% 40%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 160 30% 85%;
-    --input: 160 30% 85%;
-    --ring: 160 84% 39%;
+    --border: 136 30% 85%;
+    --input: 136 30% 85%;
+    --ring: 136 45% 31%;
 
     --radius: 0.5rem;
 
@@ -50,33 +50,33 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 160 50% 5%;
-    --foreground: 160 20% 95%;
+    --background: 136 60% 8%;
+    --foreground: 136 20% 95%;
 
-    --card: 160 50% 7%;
-    --card-foreground: 160 20% 95%;
+    --card: 136 60% 10%;
+    --card-foreground: 136 20% 95%;
 
-    --popover: 160 50% 7%;
-    --popover-foreground: 160 20% 95%;
+    --popover: 136 60% 10%;
+    --popover-foreground: 136 20% 95%;
 
-    --primary: 160 84% 45%;
-    --primary-foreground: 160 50% 5%;
+    --primary: 136 45% 40%;
+    --primary-foreground: 136 60% 8%;
 
-    --secondary: 160 30% 15%;
-    --secondary-foreground: 160 20% 85%;
+    --secondary: 136 30% 15%;
+    --secondary-foreground: 136 20% 85%;
 
-    --muted: 160 30% 15%;
-    --muted-foreground: 160 20% 65%;
+    --muted: 136 30% 15%;
+    --muted-foreground: 136 20% 65%;
 
-    --accent: 160 84% 35%;
-    --accent-foreground: 160 20% 95%;
+    --accent: 136 45% 35%;
+    --accent-foreground: 136 20% 95%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 160 30% 20%;
-    --input: 160 30% 20%;
-    --ring: 160 84% 45%;
+    --border: 136 30% 20%;
+    --input: 136 30% 20%;
+    --ring: 136 45% 40%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -125,7 +125,7 @@ All colors MUST be HSL.
   left: 0;
   width: 100%;
   height: 6px;
-  background: linear-gradient(135deg, #10b981, #34d399);
+  background: linear-gradient(135deg, #2c7345, #52a47e);
   border-radius: 50px;
   opacity: 0.3;
   z-index: -1;
@@ -143,7 +143,7 @@ All colors MUST be HSL.
   left: 0;
   width: 100%;
   height: 12px;
-  background: linear-gradient(135deg, #10b981, #34d399);
+  background: linear-gradient(135deg, #2c7345, #52a47e);
   border-radius: 50px;
   opacity: 0.2;
   z-index: -1;
@@ -182,7 +182,7 @@ All colors MUST be HSL.
 
 /* Gradient text effect */
 .gradient-text {
-  background: linear-gradient(135deg, #10b981, #34d399, #6ee7b7);
+  background: linear-gradient(135deg, #2c7345, #52a47e, #85c3a4);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -201,20 +201,20 @@ All colors MUST be HSL.
 
 /* Gradient cards */
 .gradient-card {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(52, 211, 153, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(44, 115, 69, 0.1) 0%, rgba(82, 164, 126, 0.05) 100%);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(44, 115, 69, 0.2);
 }
 
 .gradient-card-dark {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(52, 211, 153, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(44, 115, 69, 0.2) 0%, rgba(82, 164, 126, 0.1) 100%);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(44, 115, 69, 0.3);
 }
 
 /* Gradient buttons */
 .gradient-button {
-  background: linear-gradient(135deg, #059669, #10b981, #34d399);
+  background: linear-gradient(135deg, #1c472c, #2c7345, #52a47e);
   background-size: 200% 200%;
   transition: all 0.3s ease;
 }
@@ -222,7 +222,7 @@ All colors MUST be HSL.
 .gradient-button:hover {
   background-position: 100% 0%;
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 10px 30px rgba(44, 115, 69, 0.4);
 }
 
 /* Loading screen styles */
@@ -232,7 +232,7 @@ All colors MUST be HSL.
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #022c22 0%, #064e3b 25%, #047857 50%, #059669 75%, #10b981 100%);
+  background: linear-gradient(135deg, #0b1e13 0%, #122f1d 25%, #173a24 50%, #1c472c 75%, #2c7345 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -257,10 +257,10 @@ All colors MUST be HSL.
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #059669, #10b981);
+  background: linear-gradient(135deg, #1c472c, #2c7345);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #047857, #059669);
+  background: linear-gradient(135deg, #173a24, #1c472c);
 }

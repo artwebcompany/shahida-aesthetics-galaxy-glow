@@ -64,29 +64,29 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				emerald: {
-					50: '#ecfdf5',
-					100: '#d1fae5',
-					200: '#a7f3d0',
-					300: '#6ee7b7',
-					400: '#34d399',
-					500: '#10b981',
-					600: '#059669',
-					700: '#047857',
-					800: '#065f46',
-					900: '#064e3b',
-					950: '#022c22'
+					50: '#f0f7f3',
+					100: '#d9ede1',
+					200: '#b6dbc7',
+					300: '#85c3a4',
+					400: '#52a47e',
+					500: '#2c7345',
+					600: '#225a37',
+					700: '#1c472c',
+					800: '#173a24',
+					900: '#122f1d',
+					950: '#0b1e13'
 				},
 				sage: {
-					50: '#f0f4f0',
-					100: '#dce8dc',
-					200: '#b9d1b9',
-					300: '#94ba94',
-					400: '#6fa36f',
-					500: '#4a8c4a',
-					600: '#3a703a',
-					700: '#2a542a',
-					800: '#1a381a',
-					900: '#0a1c0a'
+					50: '#f0f7f3',
+					100: '#d9ede1',
+					200: '#b6dbc7',
+					300: '#85c3a4',
+					400: '#52a47e',
+					500: '#2c7345',
+					600: '#225a37',
+					700: '#1c472c',
+					800: '#173a24',
+					900: '#122f1d'
 				}
 			},
 			borderRadius: {
@@ -179,10 +179,10 @@ export default {
 				},
 				'pulse-glow': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px rgba(16, 185, 129, 0.4)'
+						boxShadow: '0 0 20px rgba(44, 115, 69, 0.4)'
 					},
 					'50%': {
-						boxShadow: '0 0 40px rgba(16, 185, 129, 0.8)'
+						boxShadow: '0 0 40px rgba(44, 115, 69, 0.8)'
 					}
 				}
 			},
@@ -199,10 +199,10 @@ export default {
 				'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
 			},
 			backgroundImage: {
-				'galaxy-gradient': 'linear-gradient(135deg, #064e3b 0%, #047857 25%, #059669 50%, #10b981 75%, #34d399 100%)',
-				'emerald-gradient': 'linear-gradient(135deg, #022c22 0%, #064e3b 25%, #047857 50%, #059669 75%, #10b981 100%)',
-				'sage-gradient': 'linear-gradient(135deg, #0a1c0a 0%, #1a381a 25%, #2a542a 50%, #3a703a 75%, #4a8c4a 100%)',
-				'cosmic-gradient': 'radial-gradient(ellipse at center, #064e3b 0%, #022c22 50%, #000000 100%)'
+				'galaxy-gradient': 'linear-gradient(135deg, #122f1d 0%, #173a24 25%, #1c472c 50%, #225a37 75%, #2c7345 100%)',
+				'emerald-gradient': 'linear-gradient(135deg, #0b1e13 0%, #122f1d 25%, #173a24 50%, #1c472c 75%, #2c7345 100%)',
+				'sage-gradient': 'linear-gradient(135deg, #0b1e13 0%, #122f1d 25%, #173a24 50%, #1c472c 75%, #2c7345 100%)',
+				'cosmic-gradient': 'radial-gradient(ellipse at center, #173a24 0%, #0b1e13 50%, #000000 100%)'
 			}
 		}
 	},
